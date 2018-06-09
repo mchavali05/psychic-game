@@ -1,47 +1,41 @@
-// Guess which letter the app chose. Put the following text on your page:
-
-// 1. Guess what letter I'm thinking of
-
-// 2. Wins: (# of times the user has guessed the letter correctly)
-
-// 3. Losses: (# of times the user has failed to guess the letter correctly after exhausting all guesses)
-
-// 4. Guesses Left: (# of guesses left. This will update)
-
-// 5. Your Guesses So Far: (the specific letters that the user typed. Display these until the user either wins or loses.)
-
-// 6. When the player wins, increase the Wins counter and start the game over again (without refreshing the page).
-
-// 7. When the player loses, increase the Losses counter and restart the game without a page refresh (just like when the user wins).
-
-
+	//computer choice
  	var options = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-    var guessesSoFar = []; //user choice
+    
+    //user choice
+    var guessesSoFar = []; 
+
 
     var wins = 0;
     var losses = 0;
     var guessesLeft = 9;
 
+    //random computer choice
     var computerOptionIndex = Math.floor(Math.random()*options.length);
     var computerOption = options[computerOptionIndex];
     
+    //html tags
     var wins_span = document.querySelector('#wins');
     var losses_span = document.querySelector('#losses');
     var guessesLeft_span = document.querySelector('#guessesLeft');
 
+    //Function to play the game
     function game(ev){
         
-
+    	//user choices
         var user_Guesses = ev.key;
         var user_Choice = String.fromCharCode(ev.key).toLowerCase();
         guessesSoFar.push(user_Guesses);
         //alert(guessesSoFar);
 		console.log(guessesSoFar);
 
-		document.querySelector('#userChoice').innerText = user_Choice;
+		
         document.querySelector('#userGuesses').innerText = guessesSoFar;
+        // document.querySelector('#userChoice').innerText = user_Choice;
         //document.querySelector('#computerChoice').innerText = computerOption;
 
+        //If user guess is equal to computer option, increment wins count, and start the game over again.
+        //If guesses left count is equal to 0, increment losses count, and start the game over again.
+        //If user guess is not equal to computer option, decrement guesses left.
         if (user_Guesses == computerOption){
              wins++;
              alert('Yay! You guessed it correct.');
