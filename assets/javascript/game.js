@@ -23,7 +23,7 @@
         
     	//user choices
         var user_Guesses = ev.key;
-        var user_Choice = String.fromCharCode(ev.key).toLowerCase();
+        //var user_Choice = String.fromCharCode(ev.key).toLowerCase();
         guessesSoFar.push(user_Guesses);
         //alert(guessesSoFar);
 		console.log(guessesSoFar);
